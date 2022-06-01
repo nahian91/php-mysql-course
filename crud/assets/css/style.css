@@ -1,0 +1,13 @@
+.heading {
+	text-align: center;
+	font-size: 42px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 60px;
+	padding-bottom: 20px;
+	font-weight: 700;
+}
+.list-group a {
+	color: #333;
+	text-decoration: navajowhite;
+	font-weight: 600;
+}
