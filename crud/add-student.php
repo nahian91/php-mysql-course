@@ -6,12 +6,12 @@
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Class</label>
-                    <select name="class" class="form-control">
-                        <option disabled>Select Class</option>
+                    <select name="class" class="form-control" required>
+                        <option disabled selected>Select Class</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
@@ -19,8 +19,8 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Section</label>
-                    <select name="section" class="form-control">
-                        <option disabled>Select Section</option>
+                    <select name="section" class="form-control" required>
+                        <option disabled selected>Select Section</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -28,19 +28,19 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Roll</label>
-                    <input type="number" class="form-control" name="roll">
+                    <input type="number" class="form-control" name="roll" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Phone</label>
-                    <input type="tel" class="form-control" name="phone">
+                    <input type="tel" class="form-control" name="phone" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Address</label>
-                    <textarea name="address" class="form-control"></textarea>
+                    <textarea name="address" class="form-control" required></textarea>
                 </div>
                 <input type="submit" class="form-control btn btn-primary d-inline" value="Add Student" name="submit">
                 </form>
