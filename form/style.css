@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.main {
+    width: 600px;
+    margin: 100px auto;
+    border: 1px solid #ddd;
+    padding: 50px;
+  }
+  .main p{    
+    margin-bottom: 20px;
+  }
+  .main input, .main textarea, .main select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  .main label {
+    font-weight: 600;
+  }
+  .main input[type="submit"] {
+    background-color: tomato;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+  }
+  .main p span {
+	font-size: 14px;
+	font-style: italic;
+	color: red;
+	font-weight: 600;
+}
