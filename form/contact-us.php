@@ -29,15 +29,27 @@
 
         // Mail
         $to = 'nahiansylhet@gmail.com';
-        $from = 'From' . $email;
-        $body = 'Name'.$name.'\n Email'.$email.'\n Subject'.$subject.'\n Message'.$message.'\n Vote'.$_POST['vote'].'\n Color'.$_POST['color'];
+        $from = 'From ' . $email;
+        
+        $body = '<html><body>';
+        $body = '<table rules="all" style="border-color:#333" cellpadding="10px">';
+        $body .= '<tr><td>Name</td><td>'.$name.'</td></tr>';
+        $body .= '<tr><td>Email</td><td>'.$email.'</td></tr>';
+        $body .= '<tr><td>Subject</td><td>'.$subject.'</td></tr>';
+        $body .= '<tr><td>Message</td><td>'.$message.'</td></tr>';
+        $body .= '<tr><td>Vote</td><td>'.$_POST['vote'].'</td></tr>';
+        $body .= '<tr><td>Color</td><td>'.$_POST['color'].'</td></tr>';
+        $body .= '</table>';
+        $body .= '</body><html>';
+        
+        $headers = "From: " . $email . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        $check = mail($to, $from, $body);
+        $check = mail($to, $from, $body, $headers);
         
         if($check == true) {
-            ?>
-                <span>Message Send Successfully</span>
-            <?php
+            $success = '<span>Message Send Successfully</span>';
         }
     }
 
@@ -139,6 +151,7 @@
             </p>
                 <input type="submit" value="Send" name="submit">
             </p>
+            <?php if(isset($success)) {echo $success;} ?>
         </form>
     </div>
 </body>
