@@ -1,0 +1,26 @@
+[
+    {
+        "name" : "David Wick",
+        "email" : "wick23@gmail.com",
+        "gender" : "Male",
+        "city" : "London",
+        "country" : "UK",
+        "salary" : "12000"
+    },
+    {
+        "name" : "Juting Bekar",
+        "email" : "bekar@gmail.com",
+        "gender" : "Male",
+        "city" : "Berlin",
+        "country" : "Germany",
+        "salary" : "15000"
+    },
+    {
+        "name" : "Sarah Jois",
+        "email" : "jois@gmail.com",
+        "gender" : "Female",
+        "city" : "Sydney",
+        "country" : "Australia",
+        "salary" : "20000"
+    }
+]
