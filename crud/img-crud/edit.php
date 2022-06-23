@@ -1,6 +1,9 @@
 <?php
+
+
     $con = mysqli_connect('localhost', 'root', '', 'img-crud') or die (mysqli_error());
     
+    $id = $_GET['id'];
 
     if(isset($_POST['submit'])) {
         $name = $_FILES['image']['name'];
@@ -17,12 +20,12 @@
             if($size < 100000) {
                 $upload = move_uploaded_file($tmp_name, 'img/' . $rename);
                 if($upload) {
-                    $insert = "INSERT INTO image (image) VALUES ('$rename')";
-                    mysqli_query($con, $insert);
-                    if($insert) {
-                        echo 'Image Stored Success';
+                    $update = "UPDATE image SET image ='$rename' WHERE id = '$id'";
+                    mysqli_query($con, $update);
+                    if($update) {
+                        echo 'Image Update Success';
                     } else {
-                        echo 'Image Stored Failded';
+                        echo 'Image Update Failded';
                     }
                 } else {
                     echo 'Image Upload Failed!';
@@ -34,6 +37,7 @@
             echo 'Image must be png or jpg';
         }
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -46,30 +50,10 @@
 </head>
 <body>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+        <img src="<?php echo $row['image'];?>" alt="">
         <input type="file" name="image">
         <br><br><br>
         <input type="submit" value="Upload Image" name="submit">
     </form> 
-    <br><br><br><br><br>
-
-    <?php
-        $sql = "SELECT * FROM image";
-        $result = mysqli_query($con, $sql);
-
-        echo '<table border="1">';
-        while($row = mysqli_fetch_assoc($result)) {
-            ?>
-                <tr>
-                    <td><?php echo $row['id'];?></td>
-                    <td><img style="width:100px" src="img/<?php echo $row['image'];?>" alt=""></td>
-                    <td>
-                        <a href="edit.php?id=<?php echo $row['id'];?>">Edit</a>
-                        <a href="">Delete</a>
-                    </td>
-                </tr>
-            <?php
-        }
-        echo '</table>';
-    ?>
 </body>
 </html>
