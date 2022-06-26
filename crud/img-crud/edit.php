@@ -2,8 +2,10 @@
 
 
     $con = mysqli_connect('localhost', 'root', '', 'img-crud') or die (mysqli_error());
-    
     $id = $_GET['id'];
+    $sql = "SELECT * FROM image WHERE id = $id";
+    $query = mysqli_query($con, $sql);
+    $std = mysqli_fetch_assoc($query);
 
     if(isset($_POST['submit'])) {
         $name = $_FILES['image']['name'];
@@ -18,17 +20,17 @@
 
         if(in_array($file_lower, $file_exts, $rename)) {
             if($size < 100000) {
-                $upload = move_uploaded_file($tmp_name, 'img/' . $rename);
-                if($upload) {
-                    $update = "UPDATE image SET image ='$rename' WHERE id = '$id'";
-                    mysqli_query($con, $update);
-                    if($update) {
-                        echo 'Image Update Success';
+                $update = move_uploaded_file($tmp_name, 'img/' . $rename);
+                if($update) {
+                    $img_update = "UPDATE image SET image ='$rename' WHERE id = '$id'";
+                    mysqli_query($con, $img_update);
+                    if($img_update) {
+                        header('Location: index.php');
                     } else {
                         echo 'Image Update Failded';
                     }
                 } else {
-                    echo 'Image Upload Failed!';
+                    echo 'Image Update Failed!';
                 }
             } else {
                 echo 'Image too big. less then 100kb';
@@ -49,8 +51,8 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
-        <img src="<?php echo $row['image'];?>" alt="">
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <img style="width:100px" src="img/<?php echo $std['image'];?>" alt="">
         <input type="file" name="image">
         <br><br><br>
         <input type="submit" value="Upload Image" name="submit">
